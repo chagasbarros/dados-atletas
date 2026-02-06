@@ -1,80 +1,83 @@
-PROJETO CERTIFICAÇÃO 2 – DEVSTART
+# Projeto Certificação 2 – DevStart
 
-VISÃO GERAL
+## Visão Geral
 
-Este repositório contém o projeto desenvolvido para a Certificação 2 do programa DevStart, com foco na aplicação de Programação Orientada a Objetos (POO) em JavaScript.
+Projeto desenvolvido para a **Certificação 2 do programa DevStart**, aplicando conceitos de **Programação Orientada a Objetos (POO)** em JavaScript. O sistema implementa uma classe para gerenciamento de atletas, realizando cálculos automáticos de categoria etária, IMC e média de notas.
 
-O projeto implementa uma classe que representa um atleta, permitindo o cálculo de categoria etária, IMC e média válida de notas, além da organização e serialização dos dados em formato JSON.
+## Tecnologias
 
-TECNOLOGIAS
+- JavaScript (ES6+)
 
-JavaScript (ES6+)
+## Funcionalidades
 
-Node.js
+- Cadastro completo de atletas
+- Cálculo automático de categoria por faixa etária
+- Cálculo do Índice de Massa Corporal (IMC)
+- Cálculo da média válida de notas (descartando extremos)
+- Serialização de dados em formato JSON
 
-FUNCIONALIDADES
-
-Cadastro de atleta com dados básicos
-
-Cálculo automático da categoria por idade
-
-Cálculo do Índice de Massa Corporal (IMC)
-
-Cálculo da média válida das notas
-
-Retorno dos dados estruturados em formato JSON
-
-ESTRUTURA DO PROJETO
-/
+## Estrutura do Projeto
+```
+.
 ├── atleta.js
 └── README.md
+```
 
-DETALHES DA IMPLEMENTAÇÃO
-CLASSE ATLETA
+## Implementação
 
-A classe Atleta encapsula os dados e comportamentos relacionados a um atleta.
+### Classe Atleta
 
-ATRIBUTOS
+A classe `Atleta` encapsula dados e comportamentos relacionados aos atletas.
 
-nome: Nome do atleta
+#### Atributos
 
-idade: Idade do atleta
+| Atributo | Tipo |
+|----------|------|
+| `nome` | String | 
+| `idade` | Number | 
+| `peso` | Number | 
+| `altura` | Number | 
+| `notas` | Array |
 
-peso: Peso em quilogramas
+### Regras de Negócio
 
-altura: Altura em metros
+#### Categorização por Idade
 
-notas: Array de notas numéricas
+| Faixa Etária | Categoria |
+|--------------|-----------|
+| 9 a 11 anos | Infantil |
+| 12 a 13 anos | Juvenil |
+| 14 a 15 anos | Intermediário |
+| 16 a 30 anos | Adulto |
+| Outras idades | Sem categoria |
 
-REGRAS DE NEGÓCIO
-
-CATEGORIA POR IDADE
-
-Faixa Etária	Categoria
-9 a 11	Infantil
-12 a 13	Juvenil
-14 a 15	Intermediário
-16 a 30	Adulto
-Outros	Sem categoria
-
-CÁLCULO DO IMC
-
-IMC = peso / (altura * altura)
+#### Cálculo do IMC
+```
+IMC = peso ÷ (altura × altura)
+```
 
 
-CÁLCULO DA MÉDIA VÁLIDA
+#### Cálculo da Média Válida
 
-Ordena as notas em ordem crescente
+1. Ordena as notas em ordem crescente
+2. Remove a **menor** e a **maior** nota
+3. Calcula a média das **três notas centrais**
 
-Remove a menor e a maior nota
+## Exemplo de Uso
+```javascript
+const joaozinho = new Atleta(
+  'Joãozinho',
+  10,
+  50,
+  1.5,
+  [10, 9, 8, 7, 6]
+);
 
-Calcula a média das três notas centrais
-
-EXEMPLO DE USO
-const joaozinho = new Atleta('Joãozinho', 10, 50, 1.5, [10, 9, 8, 7, 6]);
 console.log(joaozinho.toJson());
+```
 
-SAÍDA ESPERADA
+### Saída Esperada
+```json
 {
   "nome": "Joãozinho",
   "idade": 10,
@@ -85,23 +88,41 @@ SAÍDA ESPERADA
   "imc": 22.22,
   "media": 8
 }
+```
 
-COMO EXECUTAR O PROJETO
+## Como Executar
 
-Clone o repositório:
+1. **Clone o repositório:**
+```bash
+   git clone https://github.com/chagasbarros/dados-atletas.git
+```
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
+2. **Acesse o diretório:**
+```bash
+   cd seu-repositorio
+```
 
+3. **Execute o projeto:**
+```bash
+   node atleta.js
+```
 
-Acesse o diretório do projeto:
+## Aprendizados
 
-cd seu-repositorio
+Este projeto consolidou conhecimentos em:
 
+- Programação Orientada a Objetos em JavaScript
+- Encapsulamento de dados e métodos
+- Manipulação de arrays e ordenação
+- Cálculos matemáticos e validações
+- Formatação e serialização de dados (JSON)
 
-Execute o arquivo:
+## Autor
 
-node atleta.js
+**Chagas Barros**  
+Curso: Desenvolvimento Front-End  
+Programa: DevStart
 
-AUTOR
+---
 
-Projeto desenvolvido por Chagas Barros Curso: Desenvolvimento FrontEnd Programa: Devstart
+Se este projeto foi útil, considere dar uma estrela no repositório!
